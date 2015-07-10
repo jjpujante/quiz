@@ -17,4 +17,12 @@ router.get('/', function(req, res) {
 router.get('/quizes/question', quizController.question);
 router.get('/quizes/answer', quizController.answer);
 
+// Ejercicio Modulo6. Apartado 2)
+// añadir acceso a la página de view/author en la ruta "/author"
+router.get('/author', function(req, res) {
+  res.render('author');
+  //res.render('index', { texto: 'El portal donde podrá crear sus propios juegos!' });
+  // dejo esta línea comentada como recordatorio de cómo pasar varios parámetros... ojo
+});
+
 module.exports = router;
