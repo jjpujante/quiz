@@ -14,8 +14,9 @@ router.get('/', function(req, res) {
 
 // añado los controladores de url para las preguntas y respuestas
 // a cada "carpeta" le relaciono un método/función del controlador
-router.get('/quizes/question', quizController.question);
-router.get('/quizes/answer', quizController.answer);
+router.get('/quizes', quizController.index); // 'pantalla' inicio
+router.get('/quizes/:quizId(\\+d)', quizController.show); // Muestra la pregunta. antiguo question
+router.get('/quizes/:quizId(\\+d)/answer', quizController.answer); // comprueba la respuest
 
 // Ejercicio Modulo6. Apartado 2)
 // añadir acceso a la página de view/author en la ruta "/author"
