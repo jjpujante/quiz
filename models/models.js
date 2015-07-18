@@ -1,5 +1,6 @@
 var path = require("path");
-
+//DATABASE_URL = postgres://ekeraworxcqppe:jvln3QPfhfIi2dSD63cmGOWpPs@ec2-107-22-175-206.compute-1.amazonaws.com:5432/d7rnp6g191q4hc
+//DATABASE_URL = sqlite://:@:/
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name  = (url[6]||null);
 var user     = (url[2]||null);
@@ -18,7 +19,7 @@ var sequelize = new Sequelize(
                         DB_name, 
                         user, 
                         pwd, 
-                        {dialect: protocol, 
+                        {dialect: dialect, 
                          protocol: protocol,
                          port: port,
                          host: host,
@@ -27,7 +28,8 @@ var sequelize = new Sequelize(
                         });
 
 // Importar la definición de la tabla Quiz que está en quiz.js
-var Quiz = sequelize.import(path.join(__dirname,'quiz'));
+var quiz_path = path.join(__dirname, 'quiz');
+var Quiz = sequelize.import(quiz_path);
 // La exportamos desde la "clase" models.js
 exports.Quiz = Quiz;
 
