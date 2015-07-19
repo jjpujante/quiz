@@ -43,9 +43,7 @@ exports.create =
                 // Guardamos en bbdd la información del objeto, y entonces, vuelta al inicio
                 quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect("/quizes")});    
               }
-              
           });
-      
     };
     
 // GET quizes/
@@ -89,26 +87,31 @@ exports.answer =
         }
         res.render('quizes/answer', {quiz:req.quiz, respuesta: resultado, errors:[]});
     };
-    
-/*
-// Dejo comentado el código previo que creaba la pregunta de forma estática
-// GET quizes/question
-exports.question = 
+
+// GET quizes/edit 
+exports.edit = 
     function(req, res){
-        res.render('quizes/question', {pregunta: 'Capital de Italia'});
+      // Compone objeto 'quiz' a partir del recibido
+      var quiz = req.quiz;
+      res.render('quizes/edit', {quiz: quiz, errors:[]});
     };
     
-// GET quizes/answer
-exports.answer = 
+// PUT quizes/:Id
+exports.update = 
     function(req, res){
-        if (req.query.respuesta == 'Roma')
-        {
-            res.render('quizes/answer', {respuesta: 'Correcto'});
-        }
-        else
-        {
-            res.render('quizes/answer', {respuesta: 'Incorrecto'});
-        }
-    };
-    
-*/
+      // Sobreescribimos el contenido del objeto 'quiz' con los parámetros del cuerpo/body de la peticion
+      req.quiz.pregunta = req.body.quiz.pregunta;
+      req.quiz.repuesta = req.body.quiz.respuesta;
+      
+      req.quiz
+      .validate()
+      .then(
+          function(err){
+              if (err){
+                res.render('quiz/edit', {quiz:req.quiz, errors:err.errors});
+              }
+              else{
+                req.quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect('/quizes')});
+              }
+          });
+    };    

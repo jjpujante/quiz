@@ -21,6 +21,8 @@ router.get('/quizes/new', quizController.new); // 'pantalla' nueva pregunta
 router.post('/quizes/create', quizController.create); // llamda al controlador para registrar la nueva pregunta
 router.get('/quizes/:quizId(\\d+)', quizController.show); // Muestra la pregunta. antiguo question
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer); // comprueba la respuest
+router.get('/quizes/:quizId(\\d+)/edit', quizController.edit); // Editar la pregunta
+router.put('/quizes/:quizId(\\d+)', quizController.update); // comprueba la respuest
 
 // Ejercicio Modulo6. Apartado 2)
 // añadir acceso a la página de view/author en la ruta "/author"
