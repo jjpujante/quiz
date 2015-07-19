@@ -22,7 +22,7 @@ exports.load =
 exports.new = 
     function(req, res){
         var quiz = models.Quiz.build({pregunta: "Pregunta", respuesta: "Respuesta"});
-        res.render('quizes/new',{quiz: quiz});
+        res.render('quizes/new',{quiz: quiz, errors:[]});
     };
 
 // GET quizes/create --realiza la inserción de la pregunta al venir de /new
@@ -30,8 +30,22 @@ exports.create =
     function(req, res){
       // Compone objeto 'quiz' a partir del recibido
       var quiz = models.Quiz.build(req.body.quiz);
-      // Guardamos en bbdd la información del objeto, y entonces, vuelta al inicio
-      quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect("/quizes")});
+      // Lanzamos la función de validar los campos de objeto antes de guardar...
+      console.log(quiz);
+      quiz.validate().then(
+          function(err){
+              // Si da por salida errores,....
+              if (err){
+                  res.render('quizes/new', {quiz: quiz, errors:err.errors});
+              }
+              else
+              { // Si no da errores la llamada a valirdar
+                // Guardamos en bbdd la información del objeto, y entonces, vuelta al inicio
+                quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect("/quizes")});    
+              }
+              
+          });
+      
     };
     
 // GET quizes/
@@ -44,7 +58,7 @@ exports.index =
             console.log("buscando preguntas PATRON: "+patron);
             models.Quiz.findAll({where: ["pregunta like ?", patron]}).then(
                 function (quizes){
-                        res.render('quizes/index.ejs', {quizes: quizes});
+                        res.render('quizes/index.ejs', {quizes: quizes, errors:[]});
                     }).catch(function(error){next(error)});
         }
         else
@@ -52,7 +66,7 @@ exports.index =
             console.log("No tengo SEARCH");
             models.Quiz.findAll().then(
                     function (quizes){
-                        res.render('quizes/index.ejs', {quizes: quizes});
+                        res.render('quizes/index.ejs', {quizes: quizes, errors:[]});
                     }).catch(function(error){next(error)});
         }
     };
@@ -62,7 +76,7 @@ exports.index =
 // GET quizes/show
 exports.show = 
     function(req, res){
-        res.render('quizes/show', {quiz: req.quiz});        
+        res.render('quizes/show', {quiz: req.quiz, errors:[]});        
     };
     
 // GET quizes/answer
@@ -73,7 +87,7 @@ exports.answer =
         {   
             resultado = "Correcto";
         }
-        res.render('quizes/answer', {quiz:req.quiz, respuesta: resultado});
+        res.render('quizes/answer', {quiz:req.quiz, respuesta: resultado, errors:[]});
     };
     
 /*

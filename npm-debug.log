@@ -1,28 +1,164 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/home/ubuntu/.nvm/v0.10.35/bin/node',
 1 verbose cli   '/home/ubuntu/.nvm/v0.10.35/bin/npm',
-1 verbose cli   'start' ]
+1 verbose cli   'install' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.35
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart quiz@0.0.0
-6 info start quiz@0.0.0
-7 verbose unsafe-perm in lifecycle true
-8 info quiz@0.0.0 Failed to exec start script
-9 error quiz@0.0.0 start: `node ./bin/www`
-9 error Exit status 8
-10 error Failed at the quiz@0.0.0 start script.
-10 error This is most likely a problem with the quiz package,
-10 error not with npm itself.
-10 error Tell the author that this fails on your system:
-10 error     node ./bin/www
-10 error You can get their info via:
-10 error     npm owner ls quiz
-10 error There is likely additional logging output above.
-11 error System Linux 3.14.13-c9
-12 error command "/home/ubuntu/.nvm/v0.10.35/bin/node" "/home/ubuntu/.nvm/v0.10.35/bin/npm" "start"
-13 error cwd /home/ubuntu/workspace/quiz
-14 error node -v v0.10.35
-15 error npm -v 1.4.28
-16 error code ELIFECYCLE
-17 verbose exit [ 1, true ]
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/home/ubuntu/workspace/quiz',
+5 verbose install   [ 'body-parser',
+5 verbose install     'cookie-parser',
+5 verbose install     'debug',
+5 verbose install     'ejs',
+5 verbose install     'express',
+5 verbose install     'express-partials',
+5 verbose install     'morgan',
+5 verbose install     'pg',
+5 verbose install     'pg-hstore',
+5 verbose install     'sequelize',
+5 verbose install     'serve-favicon',
+5 verbose install     'sqlite3' ] ]
+6 info preinstall quiz@0.0.0
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping express@~4.9.0 /home/ubuntu/workspace/quiz
+9 verbose already installed skipping express-partials@^0.3.0 /home/ubuntu/workspace/quiz
+10 verbose already installed skipping morgan@~1.3.0 /home/ubuntu/workspace/quiz
+11 verbose already installed skipping pg@^4.1.1 /home/ubuntu/workspace/quiz
+12 verbose already installed skipping pg-hstore@^2.3.2 /home/ubuntu/workspace/quiz
+13 verbose already installed skipping sequelize@^2.0.0 /home/ubuntu/workspace/quiz
+14 verbose already installed skipping serve-favicon@~2.1.3 /home/ubuntu/workspace/quiz
+15 verbose cache add [ 'sqlite3@^0.3.4', null ]
+16 verbose cache add name=undefined spec="sqlite3@^0.3.4" args=["sqlite3@^0.3.4",null]
+17 verbose parsed url { protocol: null,
+17 verbose parsed url   slashes: null,
+17 verbose parsed url   auth: null,
+17 verbose parsed url   host: null,
+17 verbose parsed url   port: null,
+17 verbose parsed url   hostname: null,
+17 verbose parsed url   hash: null,
+17 verbose parsed url   search: null,
+17 verbose parsed url   query: null,
+17 verbose parsed url   pathname: 'sqlite3@^0.3.4',
+17 verbose parsed url   path: 'sqlite3@^0.3.4',
+17 verbose parsed url   href: 'sqlite3@^0.3.4' }
+18 verbose cache add name="sqlite3" spec="^0.3.4" args=["sqlite3","^0.3.4"]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: '^0.3.4',
+19 verbose parsed url   path: '^0.3.4',
+19 verbose parsed url   href: '^0.3.4' }
+20 verbose addNamed [ 'sqlite3', '^0.3.4' ]
+21 verbose addNamed [ null, '>=0.3.4-0 <0.4.0-0' ]
+22 silly lockFile 06626b4b-sqlite3-0-3-4 sqlite3@^0.3.4
+23 verbose lock sqlite3@^0.3.4 /home/ubuntu/.npm/06626b4b-sqlite3-0-3-4.lock
+24 verbose already installed skipping body-parser@~1.8.1 /home/ubuntu/workspace/quiz
+25 silly addNameRange { name: 'sqlite3', range: '>=0.3.4-0 <0.4.0-0', hasData: false }
+26 verbose already installed skipping cookie-parser@~1.3.3 /home/ubuntu/workspace/quiz
+27 verbose already installed skipping debug@~2.0.0 /home/ubuntu/workspace/quiz
+28 verbose already installed skipping ejs@~0.8.5 /home/ubuntu/workspace/quiz
+29 verbose request where is /sqlite3
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 87a19be3b89222f0
+32 verbose url raw /sqlite3
+33 verbose url resolving [ 'https://registry.npmjs.org/', './sqlite3' ]
+34 verbose url resolved https://registry.npmjs.org/sqlite3
+35 verbose request where is https://registry.npmjs.org/sqlite3
+36 info trying registry request attempt 1 at 20:30:14
+37 verbose etag "9UWAJVYX86OQUPJ9L3QPM3936"
+38 http GET https://registry.npmjs.org/sqlite3
+39 http 200 https://registry.npmjs.org/sqlite3
+40 silly registry.get cb [ 200,
+40 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+40 silly registry.get     etag: '"B6NHCK81G21NG55WYXI5XYNE3"',
+40 silly registry.get     'content-type': 'application/json',
+40 silly registry.get     'cache-control': 'max-age=60',
+40 silly registry.get     'content-length': '114140',
+40 silly registry.get     'accept-ranges': 'bytes',
+40 silly registry.get     date: 'Sun, 19 Jul 2015 20:30:14 GMT',
+40 silly registry.get     via: '1.1 varnish',
+40 silly registry.get     age: '0',
+40 silly registry.get     connection: 'keep-alive',
+40 silly registry.get     'x-served-by': 'cache-lhr6326-LHR',
+40 silly registry.get     'x-cache': 'HIT',
+40 silly registry.get     'x-cache-hits': '1',
+40 silly registry.get     'x-timer': 'S1437337814.167321,VS0,VE90',
+40 silly registry.get     vary: 'Accept' } ]
+41 silly addNameRange number 2 { name: 'sqlite3', range: '>=0.3.4-0 <0.4.0-0', hasData: true }
+42 silly addNameRange versions [ 'sqlite3',
+42 silly addNameRange   [ '2.0.0',
+42 silly addNameRange     '2.0.1',
+42 silly addNameRange     '2.0.2',
+42 silly addNameRange     '2.0.3',
+42 silly addNameRange     '2.0.4',
+42 silly addNameRange     '2.0.5',
+42 silly addNameRange     '2.0.6',
+42 silly addNameRange     '2.0.7',
+42 silly addNameRange     '2.0.8',
+42 silly addNameRange     '2.0.9',
+42 silly addNameRange     '2.0.10',
+42 silly addNameRange     '2.0.11',
+42 silly addNameRange     '2.0.12',
+42 silly addNameRange     '2.0.13',
+42 silly addNameRange     '2.0.14',
+42 silly addNameRange     '2.0.15',
+42 silly addNameRange     '2.0.16',
+42 silly addNameRange     '2.0.17',
+42 silly addNameRange     '2.0.18',
+42 silly addNameRange     '2.1.0',
+42 silly addNameRange     '2.1.1',
+42 silly addNameRange     '2.1.2',
+42 silly addNameRange     '2.1.3',
+42 silly addNameRange     '2.1.4',
+42 silly addNameRange     '2.1.5',
+42 silly addNameRange     '2.1.7',
+42 silly addNameRange     '2.1.8',
+42 silly addNameRange     '2.1.9',
+42 silly addNameRange     '2.1.10',
+42 silly addNameRange     '2.1.11',
+42 silly addNameRange     '2.1.12',
+42 silly addNameRange     '2.1.13',
+42 silly addNameRange     '2.1.14',
+42 silly addNameRange     '2.1.15',
+42 silly addNameRange     '2.1.16',
+42 silly addNameRange     '2.1.17',
+42 silly addNameRange     '2.1.18',
+42 silly addNameRange     '2.1.19',
+42 silly addNameRange     '2.2.0',
+42 silly addNameRange     '2.2.1',
+42 silly addNameRange     '2.2.2',
+42 silly addNameRange     '2.2.3',
+42 silly addNameRange     '2.2.4',
+42 silly addNameRange     '2.2.6',
+42 silly addNameRange     '2.2.7',
+42 silly addNameRange     '3.0.0',
+42 silly addNameRange     '3.0.1',
+42 silly addNameRange     '3.0.2',
+42 silly addNameRange     '3.0.4',
+42 silly addNameRange     '3.0.5',
+42 silly addNameRange     '3.0.6',
+42 silly addNameRange     '3.0.7',
+42 silly addNameRange     '3.0.8',
+42 silly addNameRange     '3.0.9' ] ]
+43 silly lockFile 06626b4b-sqlite3-0-3-4 sqlite3@^0.3.4
+44 silly lockFile 06626b4b-sqlite3-0-3-4 sqlite3@^0.3.4
+45 error notarget No compatible version found: sqlite3@'>=0.3.4-0 <0.4.0-0'
+45 error notarget Valid install targets:
+45 error notarget ["2.0.0","2.0.1","2.0.2","2.0.3","2.0.4","2.0.5","2.0.6","2.0.7","2.0.8","2.0.9","2.0.10","2.0.11","2.0.12","2.0.13","2.0.14","2.0.15","2.0.16","2.0.17","2.0.18","2.1.0","2.1.1","2.1.2","2.1.3","2.1.4","2.1.5","2.1.7","2.1.8","2.1.9","2.1.10","2.1.11","2.1.12","2.1.13","2.1.14","2.1.15","2.1.16","2.1.17","2.1.18","2.1.19","2.2.0","2.2.1","2.2.2","2.2.3","2.2.4","2.2.6","2.2.7","3.0.0","3.0.1","3.0.2","3.0.4","3.0.5","3.0.6","3.0.7","3.0.8","3.0.9"]
+45 error notarget
+45 error notarget This is most likely not a problem with npm itself.
+45 error notarget In most cases you or one of your dependencies are requesting
+45 error notarget a package version that doesn't exist.
+46 error System Linux 3.14.13-c9
+47 error command "/home/ubuntu/.nvm/v0.10.35/bin/node" "/home/ubuntu/.nvm/v0.10.35/bin/npm" "install"
+48 error cwd /home/ubuntu/workspace/quiz
+49 error node -v v0.10.35
+50 error npm -v 1.4.28
+51 error code ETARGET
+52 verbose exit [ 1, true ]

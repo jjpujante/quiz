@@ -6,7 +6,8 @@ var quizController = require('../controllers/quiz_controller');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', 
-                        texto: 'El portal donde podrá crear sus propios juegos!'
+                        texto: 'El portal donde podrá crear sus propios juegos!', 
+                        errors:[]
                        });
 });
 
