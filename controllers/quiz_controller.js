@@ -17,6 +17,23 @@ exports.load =
             }
             ).catch(function(error){next(error)});
     };
+    
+// GET quizes/new --muestra formulario para dar de alta pregunta
+exports.new = 
+    function(req, res){
+        var quiz = models.Quiz.build({pregunta: "Pregunta", respuesta: "Respuesta"});
+        res.render('quizes/new',{quiz: quiz});
+    };
+
+// GET quizes/create --realiza la inserción de la pregunta al venir de /new
+exports.create = 
+    function(req, res){
+      // Compone objeto 'quiz' a partir del recibido
+      var quiz = models.Quiz.build(req.body.quiz);
+      // Guardamos en bbdd la información del objeto, y entonces, vuelta al inicio
+      quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect("/quizes")});
+    };
+    
 // GET quizes/
 exports.index = 
     function(req, res){
