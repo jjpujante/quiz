@@ -20,10 +20,24 @@ exports.load =
 // GET quizes/
 exports.index = 
     function(req, res){
-        models.Quiz.findAll().then(
+        var patron;
+        if (req.query.search){
+            patron = '%'+req.query.search.replace(' ', '%')+'%';
+            console.log("buscando preguntas..."+req.query.search);
+            console.log("buscando preguntas PATRON: "+patron);
+            models.Quiz.findAll({where: ["pregunta like ?", patron]}).then(
                 function (quizes){
-                    res.render('quizes/index.ejs', {quizes: quizes});
-                }).catch(function(error){next(error)});
+                        res.render('quizes/index.ejs', {quizes: quizes});
+                    }).catch(function(error){next(error)});
+        }
+        else
+        {
+            console.log("No tengo SEARCH");
+            models.Quiz.findAll().then(
+                    function (quizes){
+                        res.render('quizes/index.ejs', {quizes: quizes});
+                    }).catch(function(error){next(error)});
+        }
     };
     
 
