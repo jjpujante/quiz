@@ -27,7 +27,7 @@ router.put('/quizes/:quizId(\\d+)', quizController.update); // comprueba la resp
 // Ejercicio Modulo6. Apartado 2)
 // añadir acceso a la página de view/author en la ruta "/author"
 router.get('/author', function(req, res) {
-  res.render('creditos');// llamamos a renderizar creditos.ejs sin parámetros
+  res.render('creditos', {errors:[]});// llamamos a renderizar creditos.ejs sin parámetros
 });
 
 module.exports = router;
