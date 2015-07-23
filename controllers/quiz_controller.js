@@ -120,3 +120,10 @@ exports.update =
               }
           });
     };    
+    
+// DESTROY elimina pregunta
+exports.destroy =
+    function(req, res)
+    {
+        req.quiz.destroy().then(function(){res.redirect('/quizes')}).catch(function(error){console.log("error borrando pregunta: "+req.quiz.pregunta);});
+    };

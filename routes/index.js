@@ -23,6 +23,7 @@ router.get('/quizes/:quizId(\\d+)', quizController.show); // Muestra la pregunta
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer); // comprueba la respuest
 router.get('/quizes/:quizId(\\d+)/edit', quizController.edit); // Editar la pregunta
 router.put('/quizes/:quizId(\\d+)', quizController.update); // comprueba la respuest
+router.delete('/quizes/:quizId(\\d+)', quizController.destroy); // Eliminar la pregunta
 
 // Ejercicio Modulo6. Apartado 2)
 // añadir acceso a la página de view/author en la ruta "/author"
