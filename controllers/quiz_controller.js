@@ -101,7 +101,12 @@ exports.update =
     function(req, res){
       // Sobreescribimos el contenido del objeto 'quiz' con los parámetros del cuerpo/body de la peticion
       req.quiz.pregunta = req.body.quiz.pregunta;
-      req.quiz.repuesta = req.body.quiz.respuesta;
+      req.quiz.respuesta = req.body.quiz.respuesta;
+      console.log("Quiz pregunta"+req.quiz.pregunta);
+      console.log("Quiz repuesta"+req.quiz.respuesta);
+      console.log("body pregunta"+req.body.quiz.pregunta);
+      console.log("body respuesta"+req.body.quiz.respuesta);
+      
       
       req.quiz
       .validate()
