@@ -21,7 +21,7 @@ exports.load =
 // GET quizes/new --muestra formulario para dar de alta pregunta
 exports.new = 
     function(req, res){
-        var quiz = models.Quiz.build({pregunta: "Pregunta", respuesta: "Respuesta"});
+        var quiz = models.Quiz.build({pregunta: "Pregunta", respuesta: "Respuesta", tema: "otro"});
         res.render('quizes/new',{quiz: quiz, errors:[]});
     };
 
@@ -41,14 +41,14 @@ exports.create =
               else
               { // Si no da errores la llamada a valirdar
                 // Guardamos en bbdd la información del objeto, y entonces, vuelta al inicio
-                quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect("/quizes")});    
+                quiz.save({fields:["pregunta", "respuesta", "tema"]}).then(function(){res.redirect("/quizes")});    
               }
           });
     };
     
 // GET quizes/
 exports.index = 
-    function(req, res){
+    function(req, res, next){
         var patron;
         if (req.query.search){
             patron = '%'+req.query.search.replace(' ', '%')+'%';
@@ -102,10 +102,13 @@ exports.update =
       // Sobreescribimos el contenido del objeto 'quiz' con los parámetros del cuerpo/body de la peticion
       req.quiz.pregunta = req.body.quiz.pregunta;
       req.quiz.respuesta = req.body.quiz.respuesta;
+      req.quiz.tema = req.body.quiz.tema;
       console.log("Quiz pregunta"+req.quiz.pregunta);
       console.log("Quiz repuesta"+req.quiz.respuesta);
+      console.log("Quiz tema"+req.quiz.tema);
       console.log("body pregunta"+req.body.quiz.pregunta);
       console.log("body respuesta"+req.body.quiz.respuesta);
+      console.log("body tema"+req.body.quiz.tema);
       
       
       req.quiz
@@ -116,7 +119,7 @@ exports.update =
                 res.render('quiz/edit', {quiz:req.quiz, errors:err.errors});
               }
               else{
-                req.quiz.save({fields:["pregunta", "respuesta"]}).then(function(){res.redirect('/quizes')});
+                req.quiz.save({fields:["pregunta", "respuesta", "tema"]}).then(function(){res.redirect('/quizes')});
               }
           });
     };    
@@ -127,3 +130,5 @@ exports.destroy =
     {
         req.quiz.destroy().then(function(){res.redirect('/quizes')}).catch(function(error){console.log("error borrando pregunta: "+req.quiz.pregunta);});
     };
+    
+    

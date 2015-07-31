@@ -40,8 +40,8 @@ sequelize.sync().then(
                 function (count){
                     // Solo si está vacia, contador=0, se inicializa
                     if (count=== 0){
-                        Quiz.create({pregunta:'Capital de Italia', respuesta: 'Roma'}).success(function(){console.log("BBDD inicializada");});
-                        Quiz.create({pregunta:'Capital de España', respuesta: 'Madrid'});
+                        Quiz.create({pregunta:'Capital de Italia', respuesta: 'Roma', tema:'otro'});
+                        Quiz.create({pregunta:'Capital de España', respuesta: 'Madrid', tema:'otro'}).success(function(){console.log("BBDD inicializada");});
                     }
                     
                 }); 
