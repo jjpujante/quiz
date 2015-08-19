@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
 
 // Autoload de comandos con :quizId
 router.param('quizId', quizController.load); //autoload :quizId
+router.param('commentId', commentController.load); //autoload :commentId
 
 // Rutas de LOGIN
 router.get('/login',  sessionController.new); // formulario de login
@@ -37,6 +38,9 @@ router.delete('/quizes/:quizId(\\d+)', sessionController.loginRequired, quizCont
 /** Rutas para los comentarios */
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new); // Para crear comentario
 router.post('/quizes/:quizId(\\d+)/comments', commentController.create); //  Para registrar comentario
+router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', 
+                                                sessionController.loginRequired,
+                                                commentController.publish); // Para crear comentario
 
 // Ejercicio Modulo6. Apartado 2)
 // añadir acceso a la página de view/author en la ruta "/author"
